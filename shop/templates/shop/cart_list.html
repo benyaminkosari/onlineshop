@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cart List</title>
+  </head>
+  <body>
+    {% for cart in object_list %}
+      <a href="{% url 'shop:carts-detail' pk=cart.pk %}"><b>{{cart.user}}: </b>{{cart.product}} with quantity of {{cart.quantity}}</a><br>
+    {% endfor %}
+  </body>
+</html>

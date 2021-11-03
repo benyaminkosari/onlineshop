@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block import %}
+  <div class="jumbotron">
+    <div class="post-detail">
+      <h2 class="title">{{ post.title }}</h2>
+      <h4 class="text">{{ post.text }}</h4>
+      <h5>Created on: {{post.creating_date}}</h5>
+      {% if post.publishing_date %}
+        <h5>Published on: {{ post.publishing_date }}</h5>
+      {% else %}
+        <a class="btn btn-primary" href="{% url 'blog:post_publishing' pk=post.pk%}">Publish</a>
+      {% endif %}
+      <a class="btn btn-danger" href="{% url 'blog:remove_post' pk=post.pk %}">Delete</a>
+      <a class="btn btn-info" href="{% url 'blog:edit_post' pk=post.pk %}">Edit</a>
+    </div>
+  <br>
+  <h3 style="text-align:center;margin-bottom:5%"><b>Comments</b> <a class="btn btn-primary" href="{% url 'blog:add_comment_to_post' pk=post.pk %}">Add</a></h3>
+  {% for comment in post.comments.all %}
+    <p><b>{{ comment.author }}</b>: {{ comment.text }}</p>
+    {% if not comment.is_approved %}
+      <a class="btn btn-success" href="{% url 'blog:approve_comment' pk=comment.pk %}">Approve</a>
+    {% else %}
+      <p>Posted on: {{ comment.creating_date }}</p>
+    {% endif %}
+    <a class="btn btn-danger" href="{% url 'blog:remove_comment' pk=comment.pk %}">Remove</a>
+    <hr>
+  {% empty %}
+    <p>No comments yet!</p>
+  {% endfor %}
+  </div>
+{% endblock %}

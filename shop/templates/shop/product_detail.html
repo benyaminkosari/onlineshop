@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ product.name }}</title>
+  </head>
+  <body>
+    <img src="../../../media/{{ product.image }}" alt="not found">
+    <p><b>Name:</b> {{product.name}}</p>
+    <p><b>Category:</b> {{product.category}}</p>
+    <p><b>Detail:</b> {{product.detail}}</p>
+    <p><b>Slug:</b> {{product.slug}}</p>
+    <p><b>Price:</b> {{product.price}}</p>
+    <p><b>Image:</b> {{product.image}}</p>
+    <a href="{% url 'shop:products-delete' slug=product.slug %}" title="delete">Remove</a>
+    <a href="{% url 'shop:add-to-cart-view' slug=product.slug %}">Add to cart</a>
+    {% for product_item in product.cart_products.all %}
+      {% if user == product_item.user %}
+        <a href="{% url 'shop:remove-from-cart-view' slug=product.slug %}">Remove from cart</a>
+      {% endif %}
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,35 @@
+a:hover {
+  text-decoration: none;
+}
+.post-list{
+  border: 0.5px solid yellow ;
+  margin-bottom: 2%;
+  padding: 3% 0 0 2%;
+  background-color: lightyellow;
+  margin: 0 15% 2% 15%;
+}
+.username{
+  text-align: right;
+  margin-right: 2%
+}
+.title{
+  font-family: 'Acme', sans-serif;
+
+}
+.text{
+  margin-left: 2%;
+  font-family: 'Indie Flower', cursive;
+}
+.date{
+  font-size: 85% !important;
+}
+.post-detail{
+  border: 0.5px solid yellow ;
+  margin-bottom: 2%;
+  padding: 3% 0 4% 2%;
+  background-color: lightyellow;
+  margin: 0 15% 2% 15%;
+}
+body{
+  background: gray;
+}

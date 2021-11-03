@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Order {{order.pk}}</title>
+    <style>
+      a:visited, a{
+        color: red;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <p><b>ID:</b> {{order.pk}}</p>
+    <p><b>Ordered:</b> {{order.ordered}}</p>
+    <p><b>Created:</b> {{order.created_at}}</p>
+    {% for item in order.orderitems.all %}
+      <p>
+        {{item.product.name}}
+        {{item.product.price}}
+        <a href="{% url 'shop:add-to-cart-view' slug=item.product.slug %}">+</a>
+        {{item.quantity}}
+        <a href="{% url 'shop:decrease-from-cart-view' slug=item.product.slug %}">-</a>
+        {{item.total_cart}}
+      </p>
+    {% endfor %}
+    <p>{{order.total_order}}</p>
+    <a href="{% url 'shop:payment-view' pk=order.pk %}">Buy</a>
+  </body>
+</html>

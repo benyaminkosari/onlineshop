@@ -1,0 +1,10 @@
+{% extends "blog/base.html" %}
+{% block import %}
+  <div class="jumbotron">
+    <form class="form-group" method="POST">
+      {{ form.as_p }}
+      {% csrf_token %}
+      <button class="btn btn-success" type="submit">Send</button>
+    </form>
+  </div>
+{% endblock %}

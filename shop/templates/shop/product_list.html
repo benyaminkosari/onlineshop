@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Product List</title>
+  </head>
+  <body>
+    {% for product in object_list %}
+        <a href="{% url 'shop:products-detail' slug=product.slug %}">
+        <img src="../../media/{{ product.image }}" alt="not found"></a>
+        <p><b>Name:</b> {{product.name}}</p>
+        <hr>
+    {% endfor %}
+    <a href="{% url 'shop:products-add' %}">+ Add Product +</a>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Add Product</title>
+  </head>
+  <body>
+    <h4>Create a new product:</h4>
+    <form enctype="multipart/form-data" method="POST">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      <input type="submit" value="Publish">
+    </form>
+  </body>
+</html>

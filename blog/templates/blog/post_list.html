@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block import %}
+<div class="jumbotron">
+  {% for posts in post_list %}
+  <a href="{% url 'blog:post_detail' pk=posts.pk %}">
+    <div class="post-list">
+        <p class="title"><b>{{ posts.title }}</b></p>
+        <p class="text">{{ posts.text }}</p>
+        <p><b>Comments:</b> {{posts.approved_comments_set.count}}</p>
+        <p class="username">@{{ posts.author }}</p>
+    </div>
+  </a>
+  {% empty %}
+    <li>Nothing Found!</li>
+  {% endfor %}
+</div>
+{% endblock %}

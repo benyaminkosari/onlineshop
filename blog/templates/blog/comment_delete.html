@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block import %}
+  <div class="jumbotron">
+      <form method="POST">
+          {% csrf_token %}
+          <h2>Are you sure you want to delete {{ comment.text }}?</h2>
+          <input class="btn btn-success" type="submit" value="Confirm">
+          <a class="btn btn-warning" href="{% url 'blog:post_detail' pk=comment.post.pk %}">Cancle</a>
+      </form>
+  </div>
+{% endblock %}

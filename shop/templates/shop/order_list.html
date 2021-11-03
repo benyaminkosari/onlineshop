@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Order List</title>
+  </head>
+  <body>
+    {% for order in object_list %}
+        <a href="{% url 'shop:orders-detail' pk=order.pk %}"><b>User:</b> {{order.user}}</a>
+        <hr>
+    {% endfor %}
+  </body>
+</html>
